@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use App\Models\Models\ModelCrud;
 class CrudController extends Controller
 {
@@ -47,6 +48,8 @@ class CrudController extends Controller
             'user' => $request->user,
         ]);
         return "Despesa salva com sucesso!";
+
+
     }
 
     /**
@@ -83,7 +86,7 @@ class CrudController extends Controller
     public function update(Request $request, $id)
     {
         $crud = ModelCrud::findOrFail($id);
-        $crud -> update([
+        $crud->update([
             'id' => $request->ID,
             'description' => $request->description,
             'date' => $request->date,
@@ -91,10 +94,9 @@ class CrudController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'user' => $request->user,
-        ]);
-        return "Registro atualizado";
-    }
+        ]); return 'Atualizado';
 
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -104,6 +106,6 @@ class CrudController extends Controller
     public function destroy($id){
         $crud=ModelCrud::findOrFail($id);
         $crud->delete();
-        return "Registro excluido";
+        return 'Excluido';
     }
 }

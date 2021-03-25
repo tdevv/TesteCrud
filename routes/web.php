@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +31,5 @@ Route::post('/edit/{id}','CrudController@update')->name('atualizar_registro');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/ver{$crud}', 'CrudController@teste')->name('teste');
